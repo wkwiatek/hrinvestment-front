@@ -1,6 +1,25 @@
 <template>
-  <div class="login">
-    <h2>{{ msg }}</h2>
+  <div class="container w-xxl w-auto-xs">
+    <div class="m-b-lg ">
+      <div class="wrapper text-center">
+        <strong>{{ header }}</strong>
+      </div>
+      <form name="form" class="form-validation">
+        <div class="text-danger wrapper text-center" ng-show="authError">
+
+        </div>
+        <div class="list-group list-group-sm">
+          <div class="list-group-item">
+            <input type="email" placeholder="Email" class="form-control no-border" ng-model="user.email" required="">
+          </div>
+          <div class="list-group-item">
+             <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required="">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="login()" ng-disabled="form.$invalid">Log in</button>
+        <div class="line line-dashed"></div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -8,7 +27,7 @@
 export default {
   data () {
     return {
-      msg: 'Login page'
+      header: 'Sign in to get in touch'
     }
   }
 }
