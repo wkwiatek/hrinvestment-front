@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import Asidebar from './components/menu/Asidebar'
-import Editbar from './components/menu/Editbar'
-import Footerbar from './components/menu/Footerbar'
+import Asidebar from './menu/Asidebar'
+import Editbar from './menu/Editbar'
+import Footerbar from './menu/Footerbar'
 
 export default {
   components: {

@@ -7,9 +7,9 @@
       <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
         <i class="glyphicon glyphicon-align-justify"></i>
       </button>
-      <a v-link="{ path: '/' }" class="navbar-brand text-lt">
+      <a v-link="{ path: '/app' }" class="navbar-brand text-lt">
         <i class="fa fa-btc"></i>
-        <span class="hidden-folded m-l-xs">Hr Investment</span>
+        <span class="hidden-folded m-l-xs">HR Investment</span>
       </a>
     </div>
 
@@ -26,7 +26,7 @@
         <li class="dropdown">
           <a href="#" data-toggle="dropdown" class="dropdown-toggle clear">
             <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-              <img src="../../assets/logo.png" alt="...">
+              <img src="../../../assets/logo.png" alt="...">
               <i class="on md b-white bottom"></i>
             </span>
             <span class="hidden-sm hidden-md">John.Smith</span></b>

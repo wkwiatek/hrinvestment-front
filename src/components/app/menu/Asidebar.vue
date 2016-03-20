@@ -5,9 +5,9 @@
         <nav ui-nav="" class="navi clearfix">
             <ul class="nav">
               <li>
-                <a href="" class="auto">
+                <a v-link="{ path: '/app/home'}" class="auto">
                   <i class="icon-home icon"></i>
-                  <span class="font-bold">Main</span>
+                  <span class="font-bold">Home</span>
                 </a>
               </li>
 
@@ -18,14 +18,14 @@
               </li>
 
               <li>
-                <a v-link="{ path: '/form1' }">
+                <a v-link="{ path: '/app/form1' }">
                   <i class="fa fa-edit"></i>
                   <span>Form 1</span>
                 </a>
               </li>
 
               <li>
-                <a v-link="{ path: '/form2' }">
+                <a v-link="{ path: '/app/form2' }">
                   <i class="fa fa-edit"></i>
                   <span>Form 2</span>
                 </a>
@@ -34,19 +34,13 @@
               <li class="line dk hidden-folded"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Authorization</span>
+                <span>Access</span>
               </li>
 
               <li>
-                <a v-link="{ path: '/login' }">
-                  <i class="icon-login icon"></i>
-                  <span>Login</span>
-                </a>
-              </li>
-              <li>
-                <a v-link="{ path: '/register' }">
+                <a v-link="{ path: '/app/register' }">
                   <i class="icon-user-follow icon"></i>
-                  <span>Sign-up</span>
+                  <span>Register</span>
                 </a>
               </li>
               <li>
