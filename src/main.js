@@ -19,7 +19,10 @@ import './assets/vendor/css/app.css'
 
 Vue.use(Router)
 
-var router = new Router()
+var router = new Router({
+  history: true,
+  hashbang: false
+})
 
 router.map({
   '/app': {
