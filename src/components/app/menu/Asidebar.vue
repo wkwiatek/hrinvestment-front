@@ -66,3 +66,9 @@ export default {
   }
 }
 </script>
+<style>
+.v-link-active {
+  background-color: #32374a;
+  color:  #ffffff!important;
+}
+</style>
