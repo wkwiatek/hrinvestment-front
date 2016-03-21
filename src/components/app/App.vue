@@ -2,7 +2,7 @@
   <div class="app app-header-fixed">
     <editbar></editbar>
     <asidebar></asidebar>
-    <div id="content" class="app-content" role="main">
+    <div class="app-content" role="main">
       <div class="app-content-body">
         <div class="hbox hbox-auto-xs hbox-auto-sm">
           <router-view></router-view>

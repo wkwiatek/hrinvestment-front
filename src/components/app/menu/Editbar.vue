@@ -1,5 +1,5 @@
 <template>
-  <header id="header" class="app-header navbar" role="menu">
+  <header class="app-header navbar" role="menu">
     <div class="navbar-header bg-dark">
       <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
         <i class="glyphicon glyphicon-cog"></i>

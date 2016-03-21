@@ -47,6 +47,10 @@ router.map({
   }
 })
 
+router.redirect({
+  '*': '/login'
+})
+
 router.beforeEach(() => {
   window.scrollTo(0, 0)
 })

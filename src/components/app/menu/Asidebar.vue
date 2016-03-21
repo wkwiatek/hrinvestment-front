@@ -1,5 +1,5 @@
 <template>
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
+  <aside class="app-aside hidden-xs bg-dark">
     <div class="aside-wrap">
       <div class"navi-wrap">
         <nav ui-nav="" class="navi clearfix">
