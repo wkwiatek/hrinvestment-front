@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueResource from 'vue-resource'
 
 import App from './components/app/App'
 import Home from './components/app/Home'
@@ -8,8 +9,9 @@ import Form1 from './components/app/form/Form1'
 import Form2 from './components/app/form/Form2'
 
 import UberRouter from './UberRouter'
-import Login from './components/Login'
+import Login from './components/app/auth/Login'
 
+import Auth from './auth'
 /* require styles from theme */
 import './assets/vendor/css/bootstrap.css'
 import './assets/vendor/css/font.css'
@@ -18,8 +20,11 @@ import './assets/vendor/css/simple-line-icons.css'
 import './assets/vendor/css/app.css'
 
 Vue.use(Router)
+Vue.use(VueResource)
 
-var router = new Router({
+Auth.checkAuth()
+Vue.http.options.root = 'http://hrinvestment.eu-west-1.elasticbeanstalk.com'
+export var router = new Router({
   history: true,
   hashbang: false
 })
@@ -43,15 +48,23 @@ router.map({
     }
   },
   '/login': {
-    component: Login
+    component: Login,
+    permitAll: true
   }
 })
 
 router.redirect({
-  '*': '/login'
+  '*': '/app/home'
 })
 
-router.beforeEach(() => {
+ // TODO service expired token
+ // TODO add info on redirect to login that you have no privileges
+router.beforeEach((t) => {
+  if (!t.to.permitAll && !Auth.logged()) {
+    t.redirect('/login')
+  } else {
+    t.next()
+  }
   window.scrollTo(0, 0)
 })
 
