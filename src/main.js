@@ -23,7 +23,7 @@ Vue.use(Router)
 Vue.use(VueResource)
 
 Auth.checkAuth()
-
+Vue.http.options.root = 'http://hrinvestment.eu-west-1.elasticbeanstalk.com'
 export var router = new Router({
   history: true,
   hashbang: false

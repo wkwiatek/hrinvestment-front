@@ -1,12 +1,11 @@
 import {router} from './main'
-const LOGIN_URL = 'http://hrinvestment.eu-west-1.elasticbeanstalk.com/login'
 import Vue from 'vue'
 
 export default {
   user: {authenticated: false},
   xAutToken: 'x-auth-token',
   login (ctx, data, state) {
-    ctx.$http.post(LOGIN_URL, data).then((data) => {
+    ctx.$http.post('login', data).then((data) => {
       localStorage.setItem(this.xAutToken, data.headers()[this.xAutToken])
       this.checkAuth()
       router.go(state)
