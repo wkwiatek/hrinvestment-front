@@ -1,11 +1,11 @@
 import {router} from './main'
 import Vue from 'vue'
-
+import Resource from 'vue-resource'
 export default {
   user: {authenticated: false},
   xAutToken: 'x-auth-token',
   login (ctx, data, state) {
-    ctx.$http.post('login', data).then((data) => {
+    Resource.post('login', data).then((data) => {
       localStorage.setItem(this.xAutToken, data.headers()[this.xAutToken])
       this.checkAuth()
       router.go(state)

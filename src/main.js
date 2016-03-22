@@ -54,7 +54,7 @@ router.map({
 })
 
 router.redirect({
-  '*': Auth.logged() ? '/app/home' : '/login'
+  '*': '/app/home'
 })
 
  // TODO service expired token
