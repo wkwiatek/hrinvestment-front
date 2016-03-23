@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { sync } from 'vuex-router-sync'
 
 import App from './components/app/App'
 import Home from './components/app/Home'
@@ -7,8 +8,9 @@ import Registration from './components/app/Registration'
 import Form1 from './components/app/form/Form1'
 import Form2 from './components/app/form/Form2'
 
-import UberRouter from './UberRouter'
+import Root from './Root'
 import Login from './components/Login'
+import store from './vuex/store'
 
 /* require styles from theme */
 import './assets/vendor/css/bootstrap.css'
@@ -23,6 +25,8 @@ var router = new Router({
   history: true,
   hashbang: false
 })
+
+sync(store, router)
 
 router.map({
   '/app': {
@@ -51,8 +55,4 @@ router.redirect({
   '*': '/login'
 })
 
-router.beforeEach(() => {
-  window.scrollTo(0, 0)
-})
-
-router.start(UberRouter, '#app')
+router.start(Root, '#app')
