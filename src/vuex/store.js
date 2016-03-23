@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import auth from './modules/auth'
 import createLogger from 'vuex/logger'
+
+import auth from './modules/auth'
 
 Vue.use(Vuex)
 Vue.config.debug = true

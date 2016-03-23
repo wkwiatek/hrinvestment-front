@@ -5,20 +5,20 @@ import {
 } from '../mutation-types'
 
 const state = {
-  authorized: false
+  token: null
 }
 
-// mutations
 const mutations = {
   [AUTH_REQUEST] (state) {
+    console.log('asdqwe', state)
   },
 
-  [AUTH_SUCCESS] (state) {
-    state.authorized = true
+  [AUTH_SUCCESS] (state, action) {
+    state.token = action.token
   },
 
   [AUTH_FAILURE] (state) {
-    state.authorized = false
+    state.token = null
   }
 }
 
