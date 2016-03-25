@@ -1,7 +1,8 @@
 import {
   AUTH_REQUEST,
   AUTH_SUCCESS,
-  AUTH_FAILURE
+  AUTH_FAILURE,
+  AUTH_INVALIDATE
 } from '../mutation-types'
 
 const state = {
@@ -17,6 +18,10 @@ const mutations = {
   },
 
   [AUTH_FAILURE] (state) {
+    state.token = null
+  },
+
+  [AUTH_INVALIDATE] (state) {
     state.token = null
   }
 }
