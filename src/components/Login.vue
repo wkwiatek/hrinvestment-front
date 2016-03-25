@@ -12,10 +12,10 @@
           </div>
           <div class="list-group list-group-sm">
             <div class="list-group-item">
-              <input type="email" placeholder="Email" class="form-control no-border"required="" aria-required="true" aria-invalid="true">
+              <input v-model="user.username" type="email" placeholder="Email" class="form-control no-border" required="" aria-required="true" aria-invalid="true">
             </div>
             <div class="list-group-item">
-              <input type="password" placeholder="Password" class="form-control no-border" required="" aria-required="true" aria-invalid="true">
+              <input v-model="user.password" type="password" placeholder="Password" class="form-control no-border" required="" aria-required="true" aria-invalid="true">
             </div>
           </div>
           <button type="submit" class="btn btn-lg btn-primary btn-block" aria-disabled="true">Log in</button>
@@ -39,11 +39,15 @@ export default {
   },
   methods: {
     login () {
-      this.authorize({ token: 123 })
+      this.authorize({
+        username: this.user.username,
+        password: this.user.password
+      })
     }
   },
   data () {
     return {
+      user: { username: '', password: '' },
       header: 'Sign in to get in touch'
     }
   }

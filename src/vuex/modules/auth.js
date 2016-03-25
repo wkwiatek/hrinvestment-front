@@ -10,11 +10,10 @@ const state = {
 
 const mutations = {
   [AUTH_REQUEST] (state) {
-    console.log('asdqwe', state)
   },
 
-  [AUTH_SUCCESS] (state, action) {
-    state.token = action.token
+  [AUTH_SUCCESS] (state, action, token) {
+    state.token = token
   },
 
   [AUTH_FAILURE] (state) {
