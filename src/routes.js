@@ -5,10 +5,13 @@ import Form1 from './components/app/form/Form1'
 import Form2 from './components/app/form/Form2'
 import Login from './components/Login'
 
+import store from './vuex/store'
+
 const createRouter = (router) => {
   router.map({
     '/app': {
       component: App,
+      auth: true,
       subRoutes: {
         '/home': {
           component: Home
@@ -30,7 +33,16 @@ const createRouter = (router) => {
   })
 
   router.redirect({
-    '*': '/login'
+    '*': '/login',
+    auth: false
+  })
+
+  router.beforeEach(function (transition) {
+    if (transition.to.auth && !store.state.auth.token) {
+      transition.redirect('/login')
+    } else {
+      transition.next()
+    }
   })
 }
 
