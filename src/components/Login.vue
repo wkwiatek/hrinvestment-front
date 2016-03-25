@@ -6,19 +6,19 @@
         <div class="wrapper text-center">
           <strong>Log in</strong>
         </div>
-        <form name="form" class="form-validation">
+        <form @submit.prevent="login($signinValidation)" name="form" class="form-validation">
           <div class="text-danger wrapper text-center" aria-hidden="true">
 
           </div>
           <div class="list-group list-group-sm">
             <div class="list-group-item">
-              <input type="email" placeholder="Email" class="form-control no-border"required="" aria-required="true" aria-invalid="true">
+              <input v-model="user.username" type="email" placeholder="Email" class="form-control no-border" required="" aria-required="true" aria-invalid="true">
             </div>
             <div class="list-group-item">
-              <input type="password" placeholder="Password" class="form-control no-border" required="" aria-required="true" aria-invalid="true">
+              <input v-model="user.password" type="password" placeholder="Password" class="form-control no-border" required="" aria-required="true" aria-invalid="true">
             </div>
           </div>
-          <button type="submit" class="btn btn-lg btn-primary btn-block" aria-disabled="true" disabled="disabled">Log in</button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block" aria-disabled="true">Log in</button>
           <div class="line line-dashed"></div>
         </form>
       </div>
@@ -30,9 +30,24 @@
 </template>
 
 <script>
+import { authorize } from '../vuex/actions'
 export default {
+  vuex: {
+    actions: {
+      authorize
+    }
+  },
+  methods: {
+    login () {
+      this.authorize({
+        username: this.user.username,
+        password: this.user.password
+      })
+    }
+  },
   data () {
     return {
+      user: { username: '', password: '' },
       header: 'Sign in to get in touch'
     }
   }

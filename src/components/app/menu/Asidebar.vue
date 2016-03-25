@@ -44,7 +44,7 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a @click="logout()">
                   <i class="icon-logout icon"></i>
                   <span>Logout</span>
                 </a>
@@ -58,7 +58,19 @@
 </template>
 
 <script>
+import { invalidate } from '../../../vuex/actions'
+
 export default {
+  vuex: {
+    actions: {
+      invalidate
+    }
+  },
+  methods: {
+    logout () {
+      this.invalidate()
+    }
+  },
   data () {
     return {
       msg: 'Menu'
