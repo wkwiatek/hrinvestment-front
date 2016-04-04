@@ -20,19 +20,19 @@
                 >
               </div>
               <div v-if="$validation.username.touched && $validation.username.invalid">
-                <small class="text-danger" v-show="$validation.username.required">Username cannot be empty</small>
+                <small class="text-danger" v-show="$validation.username.required">Należy podać adres e-mail</small>
               </div>
               <div class="list-group-item">
                 <input
                   v-model="user.password"
                   v-validate:password="['required']"
                   type="password"
-                  placeholder="Password"
+                  placeholder="Hasło"
                   class="form-control no-border" required="" aria-required="true" aria-invalid="true"
                 >
               </div>
               <div v-if="$validation.password.touched && $validation.password.invalid">
-                <small class="text-danger" v-show="$validation.password.required">Password cannot be empty</small>
+                <small class="text-danger" v-show="$validation.password.required">Należy podać hasło</small>
               </div>
             </div>
             <button type="submit" class="btn btn-lg btn-primary btn-block" aria-disabled="true" :disabled="!$validation.valid">Log in</button>

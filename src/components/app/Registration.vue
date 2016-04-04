@@ -10,21 +10,21 @@
         </div>
         <div class="list-group list-group-sm">
           <div class="list-group-item">
-            <input placeholder="Name" class="form-control no-border" required="">
+            <input placeholder="Imię" class="form-control no-border" required="">
           </div>
           <div class="list-group-item">
             <input type="email" placeholder="Email" class="form-control no-border" required="">
           </div>
           <div class="list-group-item">
-             <input type="password" placeholder="Password" class="form-control no-border" required="">
+             <input type="password" placeholder="Hasło" class="form-control no-border" required="">
           </div>
         </div>
         <div class="checkbox m-b-md m-t-none">
           <label class="i-checks">
-            <input type="checkbox" required=""><i></i> Agree the <a href="">terms and policy</a>
+            <input type="checkbox" required=""><i></i> Akceptuję <a href="">zgody i warunki korzystania z serwisu</a>
           </label>
         </div>
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Rejestruj</button>
       </form>
     </div>
   </div>
@@ -34,7 +34,7 @@
 export default {
   data () {
     return {
-      header: 'Register new user'
+      header: 'Zarejestruj nowego użytkownika'
     }
   }
 }

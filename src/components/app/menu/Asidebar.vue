@@ -7,46 +7,46 @@
               <li>
                 <a v-link="{ path: '/app/home'}" class="auto">
                   <i class="icon-home icon"></i>
-                  <span class="font-bold">Home</span>
+                  <span class="font-bold">Strona główna</span>
                 </a>
               </li>
 
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Forms</span>
+                <span>Formularze</span>
               </li>
 
               <li>
                 <a v-link="{ path: '/app/form1' }">
                   <i class="fa fa-edit"></i>
-                  <span>Form 1</span>
+                  <span>Formularz 1</span>
                 </a>
               </li>
 
               <li>
                 <a v-link="{ path: '/app/form2' }">
                   <i class="fa fa-edit"></i>
-                  <span>Form 2</span>
+                  <span>Formularz 2</span>
                 </a>
               </li>
 
               <li class="line dk hidden-folded"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Access</span>
+                <span>Użytkownicy</span>
               </li>
 
               <li>
                 <a v-link="{ path: '/app/register' }">
                   <i class="icon-user-follow icon"></i>
-                  <span>Register</span>
+                  <span>Rejestracja</span>
                 </a>
               </li>
               <li>
                 <a @click="logout()">
                   <i class="icon-logout icon"></i>
-                  <span>Logout</span>
+                  <span>Wyloguj</span>
                 </a>
               </li>
             </ul>
