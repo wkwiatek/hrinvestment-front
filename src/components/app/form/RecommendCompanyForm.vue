@@ -1,52 +1,48 @@
 <template>
   <div class="bg-light lter b-b wrapper-md hidden-print">
-    <h1 class="m-n font-thin h3">Formularz 1</h1>
+    <h1 class="m-n font-thin h3">Formularz: Poleć firmę</h1>
   </div>
   <div class="wrapper">
+
     <div class="panel panel-default">
       <div class="panel-heading font-bold">Podstawowe informacje</div>
       <div class="panel-body">
-        <form class="form-horizontal">
+        <form novalidate class="form-horizontal">
           <div class="form-group">
             <label class="col-sm-2 control-label">Imię</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control rounded">
+              <input v-model="form.name" type="text" class="form-control rounded">
+              <span class="help-block m-b-none"><i>A block of help text that breaks onto a new line and may extend beyond one line.</i></span>
             </div>
           </div>
           <div class="form-group">
-          <label class="col-sm-2 control-label">Nazwisko</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control rounded">
-            <span class="help-block m-b-none">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+            <label class="col-sm-2 control-label">Nazwisko</label>
+            <div class="col-sm-10">
+              <input v-model="form.surname" type="text" class="form-control rounded">
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Aktywny</label>
-          <div class="col-sm-10">
-            <label class="i-switch i-switch-md bg-info m-t-xs m-r">
-              <input type="checkbox" checked="">
-              <i></i>
-            </label>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Stanowisko</label>
+            <div class="col-sm-10">
+              <input v-model="form.job" type="text" class="form-control rounded">
+            </div>
           </div>
-        </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading font-bold">Dodatkowe</div>
-      <div class="panel-body">
-        <form class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Nr telefonu</label>
+            <div class="col-sm-10">
+              <input v-model="form.phone" type="text" class="form-control rounded">
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">Adres</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control rounded">
+              <input v-model="form.address" type="text" class="form-control rounded">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">Inne informacje</label>
+            <label class="col-sm-2 control-label">Kraj</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control rounded">
+              <input v-model="form.country" type="text" class="form-control rounded">
             </div>
           </div>
           <div class="form-group">
@@ -83,8 +79,31 @@
 
     <div class="container">
       <div class="row text-center">
-        <button type="submit" class="btn btn-lg btn-primary btn-rounded">Zapisz</button>
+        <button :click="send()" class="btn btn-lg btn-primary btn-rounded">Zapisz</button>
       </div>
     <div>
   </div>
 </template>
+
+<script>
+import { sendCompanyRecommendationForm } from '../../../vuex/actions'
+
+export default {
+  vuex: {
+    actions: {
+      sendCompanyRecommendationForm
+    }
+  },
+  methods: {
+    send () {
+      console.log('sending')
+      this.sendCompanyRecommendationForm({form: this.form})
+    }
+  },
+  data () {
+    return {
+      form: { name: '', surname: '', job: '', phone: '', address: '', country: '' }
+    }
+  }
+}
+</script>

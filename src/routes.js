@@ -1,8 +1,8 @@
 import App from './components/app/App'
 import Home from './components/app/Home'
 import Registration from './components/app/Registration'
-import Form1 from './components/app/form/Form1'
-import Form2 from './components/app/form/Form2'
+import RecommendCompanyForm from './components/app/form/RecommendCompanyForm'
+import RecommendWorkerForm from './components/app/form/RecommendWorkerForm'
 import Login from './components/Login'
 
 import store from './vuex/store'
@@ -19,11 +19,11 @@ const createRouter = (router) => {
         '/register': {
           component: Registration
         },
-        '/form1': {
-          component: Form1
+        '/form/recommend-company': {
+          component: RecommendCompanyForm
         },
-        '/form2': {
-          component: Form2
+        '/form/recommend-worker': {
+          component: RecommendWorkerForm
         }
       }
     },

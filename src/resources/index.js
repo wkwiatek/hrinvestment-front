@@ -6,3 +6,4 @@ Vue.use(VueResource)
 Vue.http.options.root = 'http://hrinvestment.eu-west-1.elasticbeanstalk.com'
 
 export const LoginResource = Vue.resource('login')
+export const RecommendCompanyResource = Vue.resource('recommend/company')
