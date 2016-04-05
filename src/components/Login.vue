@@ -7,7 +7,7 @@
           <strong>Log in</strong>
         </div>
         <validator name="validation">
-          <form novalidate @submit.prevent="login($signinValidation)" name="form" class="form-validation" >
+          <form novalidate @submit.prevent="login()" name="form" class="form-validation" >
             <div class="list-group list-group-sm">
               <div class="list-group-item">
                 <input

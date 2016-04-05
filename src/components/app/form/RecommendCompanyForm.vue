@@ -7,7 +7,7 @@
     <div class="panel panel-default">
       <div class="panel-heading font-bold">Podstawowe informacje</div>
       <div class="panel-body">
-        <form novalidate class="form-horizontal">
+        <form novalidate @submit.prevent="send()" class="form-horizontal">
           <div class="form-group">
             <label class="col-sm-2 control-label">Imię</label>
             <div class="col-sm-10">
@@ -60,29 +60,26 @@
             </div>
           </div>
           <div class="form-group">
-          <label class="col-sm-2 control-label">Plik</label>
-          <div class="col-sm-10">
-            <input type="file" data-classinput="form-control inline v-middle input-s" id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-            <div class="bootstrap-filestyle input-group">
-              <input type="text" class="form-control " disabled="">
-              <span class="group-span-filestyle input-group-btn" tabindex="0">
-                <label for="filestyle-0" class="btn btn-default ">
-                  <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Wybierz plik
-                </label>
-              </span>
+            <label class="col-sm-2 control-label">Plik</label>
+            <div class="col-sm-10">
+              <input type="file" data-classinput="form-control inline v-middle input-s" id="filestyle-0" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+              <div class="bootstrap-filestyle input-group">
+                <input type="text" class="form-control " disabled="">
+                <span class="group-span-filestyle input-group-btn" tabindex="0">
+                  <label for="filestyle-0" class="btn btn-default ">
+                    <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Wybierz plik
+                  </label>
+                </span>
+              </div>
+            </div>
           </div>
+          <div class="row text-center">
+            <button type="submit" class="btn btn-lg btn-primary btn-rounded">Zapisz</button>
           </div>
         </div>
-        </form>
+      </form>
       </div>
     </div>
-
-    <div class="container">
-      <div class="row text-center">
-        <button :click="send()" class="btn btn-lg btn-primary btn-rounded">Zapisz</button>
-      </div>
-    <div>
-  </div>
 </template>
 
 <script>
