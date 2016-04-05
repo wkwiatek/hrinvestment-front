@@ -1,4 +1,6 @@
 import auth from '../api/auth'
+import recommendCompany from '../api/recommend-company'
+
 import * as types from './mutation-types'
 
 export const authorize = ({ dispatch }, user) => {
@@ -16,4 +18,14 @@ export const invalidate = ({ dispatch }) => {
   dispatch(types.AUTH_REQUEST)
   dispatch(types.AUTH_INVALIDATE)
   dispatch(types.CHANGE_ROUTE, {path: '/login'})
+}
+
+export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
+  dispatch(types.FORM_RECOMMEND_COMPANY_REQUEST, form)
+  recommendCompany.send(form).then(
+    (response) => {
+      dispatch(types.FORM_RECOMMEND_COMPANY_SUCCESS)
+    },
+    () => dispatch(types.FORM_FAILURE)
+  )
 }

@@ -18,16 +18,16 @@
               </li>
 
               <li>
-                <a v-link="{ path: '/app/form1' }">
+                <a v-link="{ path: '/app/form/recommend-company' }">
                   <i class="fa fa-edit"></i>
-                  <span>Formularz 1</span>
+                  <span>Poleć firmę</span>
                 </a>
               </li>
 
               <li>
-                <a v-link="{ path: '/app/form2' }">
+                <a v-link="{ path: '/app/form/recommend-worker' }">
                   <i class="fa fa-edit"></i>
-                  <span>Formularz 2</span>
+                  <span>Poleć pracownika</span>
                 </a>
               </li>
 
