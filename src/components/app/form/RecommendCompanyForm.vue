@@ -96,8 +96,7 @@ export default {
   },
   methods: {
     send () {
-      console.log('sending')
-      this.sendCompanyRecommendationForm({form: this.form})
+      this.sendCompanyRecommendationForm(this.form)
     }
   },
   data () {
