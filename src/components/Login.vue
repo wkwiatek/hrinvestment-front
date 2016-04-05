@@ -11,16 +11,16 @@
             <div class="list-group list-group-sm">
               <div class="list-group-item">
                 <input
-                  v-model="user.username"
-                  v-validate:username="['required']"
+                  v-model="user.email"
+                  v-validate:email="['required']"
                   type="text"
                   placeholder="Email"
                   inital="off"
                   class="form-control no-border" aria-required="true" aria-invalid="true"
                 >
               </div>
-              <div v-if="$validation.username.touched && $validation.username.invalid">
-                <small class="text-danger" v-show="$validation.username.required">Należy podać adres e-mail</small>
+              <div v-if="$validation.email.touched && $validation.email.invalid">
+                <small class="text-danger" v-show="$validation.email.required">Należy podać adres e-mail</small>
               </div>
               <div class="list-group-item">
                 <input
@@ -62,14 +62,14 @@ export default {
   methods: {
     login () {
       this.authorize({
-        username: this.user.username,
+        email: this.user.email,
         password: this.user.password
       })
     }
   },
   data () {
     return {
-      user: { username: '', password: '' },
+      user: { email: '', password: '' },
       header: 'Sign in to get in touch'
     }
   }
