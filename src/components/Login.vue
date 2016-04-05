@@ -61,10 +61,12 @@ export default {
   },
   methods: {
     login () {
+      this.$progress.start()
       this.authorize({
         username: this.user.username,
         password: this.user.password
       })
+      this.$progress.finish()
     }
   },
   data () {

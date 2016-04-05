@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "vue": "^1.0.17",
+    "vue-progressbar": "^0.2.4",
     "vue-resource": "^0.7.0",
     "vue-router": "^0.7.11",
     "vue-validator": "^2.0.0",

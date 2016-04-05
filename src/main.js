@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueValidator from 'vue-validator'
+import VueProgress from 'vue-progressbar'
 import { sync } from 'vuex-router-sync'
 
 import Root from './components/Root'
@@ -16,6 +17,7 @@ import './assets/vendor/css/app.css'
 
 Vue.use(VueRouter)
 Vue.use(VueValidator)
+Vue.use(VueProgress)
 
 var router = new VueRouter({
   history: true,
