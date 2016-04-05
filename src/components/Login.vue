@@ -19,7 +19,7 @@
                   class="form-control no-border" aria-required="true" aria-invalid="true"
                 >
               </div>
-              <div v-if="$validation.email.touched && $validation.email.invalid">
+              <div v-if="$validation.email.touched && $validation.email.invalid" class="text-center">
                 <small class="text-danger" v-show="$validation.email.required">Należy podać adres e-mail</small>
               </div>
               <div class="list-group-item">
@@ -31,7 +31,7 @@
                   class="form-control no-border" required="" aria-required="true" aria-invalid="true"
                 >
               </div>
-              <div v-if="$validation.password.touched && $validation.password.invalid">
+              <div v-if="$validation.password.touched && $validation.password.invalid" class="text-center">
                 <small class="text-danger" v-show="$validation.password.required">Należy podać hasło</small>
               </div>
             </div>
