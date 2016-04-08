@@ -20,3 +20,4 @@ Vue.http.interceptors.push({
 
 export const LoginResource = Vue.resource('login')
 export const RecommendCompanyResource = Vue.resource('recommend/company')
+export const RecommendWorkerResource = Vue.resource('recommend/worker')

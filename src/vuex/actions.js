@@ -1,5 +1,6 @@
 import auth from '../api/auth'
 import recommendCompany from '../api/recommend-company'
+import recommendWorker from '../api/recommend-worker'
 
 import * as types from './mutation-types'
 
@@ -25,6 +26,16 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
   recommendCompany.send(form).then(
     (response) => {
       dispatch(types.FORM_RECOMMEND_COMPANY_SUCCESS)
+    },
+    () => dispatch(types.FORM_FAILURE)
+  )
+}
+
+export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
+  dispatch(types.FORM_RECOMMEND_WORKER_REQUEST, form)
+  recommendWorker.send(form).then(
+    (response) => {
+      dispatch(types.FORM_RECOMMEND_WORKER_SUCCESS)
     },
     () => dispatch(types.FORM_FAILURE)
   )
