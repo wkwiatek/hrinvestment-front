@@ -6,23 +6,31 @@ import {
 } from '../mutation-types'
 
 const state = {
-  token: null
+  token: null,
+  firstname: null,
+  lastname: null
 }
 
 const mutations = {
   [AUTH_REQUEST] (state) {
   },
 
-  [AUTH_SUCCESS] (state, action, token) {
+  [AUTH_SUCCESS] (state, action, token, firstname, lastname) {
     state.token = token
+    state.firstname = firstname
+    state.lastname = lastname
   },
 
   [AUTH_FAILURE] (state) {
     state.token = null
+    state.firstname = null
+    state.lastname = null
   },
 
   [AUTH_INVALIDATE] (state) {
     state.token = null
+    state.firstname = null
+    state.lastname = null
   }
 }
 

@@ -8,7 +8,7 @@ export const authorize = ({ dispatch }, user) => {
   dispatch(types.AUTH_REQUEST)
   auth.authorize(user).then(
     (response) => {
-      dispatch(types.AUTH_SUCCESS, user, response.headers('x-auth-token'))
+      dispatch(types.AUTH_SUCCESS, user, response.headers('x-auth-token'), response.data['name'], response.data['surname'])
       dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
     },
     () => dispatch(types.AUTH_FAILURE)

@@ -1,1 +1,1 @@
-export const getAuth = state => state.auth
+export const getFullname = (state) => state.auth.firstname + ' ' + state.auth.lastname
