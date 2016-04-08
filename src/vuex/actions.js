@@ -46,9 +46,22 @@ export const sendRegisterUserForm = ({ dispatch }, form) => {
   registerUser.send(form).then(
     (response) => {
       dispatch(types.FORM_REGISTER_USER_SUCCESS)
+      dispatch(types.ALERT_SHOW, {
+        header: 'Sukces!',
+        type: 'success',
+        body: 'Użytkownik został zarejestrowany'
+      })
     },
-    () => dispatch(types.FORM_FAILURE)
+    () => {
+      dispatch(types.FORM_FAILURE)
+      dispatch(types.ALERT_SHOW, {
+        header: 'Błąd!',
+        type: 'danger',
+        body: 'Błąd podczas rejestracji nowego użytkownika'
+      })
+    }
   )
+  setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
 }
 
 export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
