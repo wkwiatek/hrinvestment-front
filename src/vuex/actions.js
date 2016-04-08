@@ -1,6 +1,7 @@
 import auth from '../api/auth'
 import recommendCompany from '../api/recommend-company'
 import recommendWorker from '../api/recommend-worker'
+import registerUser from '../api/register-user'
 
 import * as types from './mutation-types'
 
@@ -19,6 +20,16 @@ export const invalidate = ({ dispatch }) => {
   dispatch(types.AUTH_REQUEST)
   dispatch(types.AUTH_INVALIDATE)
   dispatch(types.CHANGE_ROUTE, {path: '/login'})
+}
+
+export const sendRegisterUserForm = ({ dispatch }, form) => {
+  dispatch(types.FORM_REGISTER_USER_REQUEST, form)
+  registerUser.send(form).then(
+    (response) => {
+      dispatch(types.FORM_REGISTER_USER_SUCCESS)
+    },
+    () => dispatch(types.FORM_FAILURE)
+  )
 }
 
 export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
