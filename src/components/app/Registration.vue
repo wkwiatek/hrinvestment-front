@@ -2,21 +2,21 @@
   <div class="container w-xxl w-auto-xs">
     <div class="m-b-lg">
       <div class="wrapper text-center">
-        <strong>{{ header }}</strong>
+        <strong>Zarejestruj nowego użytkownika</strong>
       </div>
-      <form name="form" class="form-validation">
-        <div class="text-danger wrapper text-center">
-
-        </div>
+      <form novalidate @submit.prevent="send()" class="form-validation">
         <div class="list-group list-group-sm">
           <div class="list-group-item">
-            <input placeholder="Imię" class="form-control no-border" required="">
+            <input v-model="form.name" placeholder="Imię" class="form-control no-border" required="">
           </div>
           <div class="list-group-item">
-            <input type="email" placeholder="Email" class="form-control no-border" required="">
+            <input v-model="form.surname" placeholder="Nazwisko" class="form-control no-border" required="">
           </div>
           <div class="list-group-item">
-             <input type="password" placeholder="Hasło" class="form-control no-border" required="">
+            <input v-model="form.email" type="email" placeholder="Email" class="form-control no-border" required="">
+          </div>
+          <div class="list-group-item">
+             <input v-model="form.password" type="password" placeholder="Hasło" class="form-control no-border" required="">
           </div>
         </div>
         <div class="checkbox m-b-md m-t-none">
@@ -31,10 +31,24 @@
 </template>
 
 <script>
+import { sendRegisterUserForm } from '../../vuex/actions'
+
 export default {
+  vuex: {
+    actions: {
+      sendRegisterUserForm
+    }
+  },
+  methods: {
+    send () {
+      this.$progress.start()
+      this.sendRegisterUserForm(this.form)
+      this.$progress.finish()
+    }
+  },
   data () {
     return {
-      header: 'Zarejestruj nowego użytkownika'
+      form: { name: '', surname: '', email: '', password: '' }
     }
   }
 }
