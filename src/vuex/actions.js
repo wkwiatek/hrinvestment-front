@@ -26,6 +26,11 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
   recommendCompany.send(form).then(
     (response) => {
       dispatch(types.FORM_RECOMMEND_COMPANY_SUCCESS)
+      dispatch(types.ALERT_SHOW, {
+        header: 'Success!',
+        body: 'test'
+      })
+      setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
     },
     () => dispatch(types.FORM_FAILURE)
   )
