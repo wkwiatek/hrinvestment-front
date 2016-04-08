@@ -20,19 +20,24 @@
           <i class="fa fa-indent fa-fw text-active"></i>
         </a>
       </div>
-      </ul>
-
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" data-toggle="dropdown" class="dropdown-toggle clear">
-            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-              <img src="../../../assets/logo.png" alt="...">
-              <i class="on md b-white bottom"></i>
-            </span>
-            <span class="hidden-sm hidden-md">John.Smith</span></b>
-          </a>
-        </li>
-      </ul>
-    </div>
+          <li class="dropdown" dropdown="" style="">
+            <a class="dropdown-toggle clear" dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+              <span class="hidden-sm hidden-md">{{ getFullname }}</span>
+            </a>
+          </li>
+        </ul>
   </header>
 </template>
+
+<script>
+import {getFullname} from '../../../vuex/getters.js'
+
+export default {
+  vuex: {
+    getters: {
+      getFullname
+    }
+  }
+}
+</script>
