@@ -93,7 +93,9 @@ export default {
   },
   methods: {
     send () {
+      this.$progress.start()
       this.sendCompanyRecommendationForm(this.form)
+      this.$progress.finish()
     }
   },
   data () {

@@ -1,3 +1,6 @@
+export const ALERT_SHOW = 'ALERT_SHOW'
+export const ALERT_HIDE = 'ALERT_HIDE'
+
 export const AUTHORIZE = 'AUTHORIZE'
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
