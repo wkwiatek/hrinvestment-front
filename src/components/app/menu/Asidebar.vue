@@ -1,32 +1,23 @@
 <template>
-  <aside class="app-aside hidden-xs bg-dark">
+  <aside class="app-aside hidden-xs bg-black">
     <div class="aside-wrap">
-      <div class"navi-wrap">
+      <div class=navi-wrap">
         <nav ui-nav="" class="navi clearfix">
             <ul class="nav">
-              <li>
-                <a v-link="{ path: '/app/home'}" class="auto">
-                  <i class="icon-home icon"></i>
-                  <span class="font-bold">Strona główna</span>
-                </a>
-              </li>
-
-              <li class="line dk"></li>
-
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Formularze</span>
               </li>
 
               <li>
                 <a v-link="{ path: '/app/form/recommend-company' }">
-                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-edit icon text-info-dker"></i>
                   <span>Poleć firmę</span>
                 </a>
               </li>
 
               <li>
                 <a v-link="{ path: '/app/form/recommend-worker' }">
-                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-edit icon text-info-dker"></i>
                   <span>Poleć pracownika</span>
                 </a>
               </li>
@@ -39,13 +30,13 @@
 
               <li>
                 <a v-link="{ path: '/app/register' }">
-                  <i class="icon-user-follow icon"></i>
+                  <i class="icon-user-follow icon text-success"></i>
                   <span>Rejestracja</span>
                 </a>
               </li>
               <li>
                 <a @click="logout()">
-                  <i class="icon-logout icon"></i>
+                  <i class="icon-logout icon text-danger"></i>
                   <span>Wyloguj</span>
                 </a>
               </li>
