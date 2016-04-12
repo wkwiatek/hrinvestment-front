@@ -19,7 +19,7 @@
              <input v-model="form.password" type="password" placeholder="Hasło" class="form-control no-border" required="">
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label">Uprawnienia</label>
+            <label class="col-sm-4 control-label">Uprawnienia:</label>
             <div class="col-sm-8">
               <div class="checkbox" v-for="perm in perms">
                 <label class="i-checks">
@@ -39,6 +39,7 @@
 <script>
 import { sendRegisterUserForm } from '../../vuex/actions'
 import auth from '../../api/auth'
+import {PERMISSIONS} from '../../utils/translations.js'
 
 export default {
   vuex: {
@@ -56,12 +57,8 @@ export default {
   computed: {
     selectedPerms: function () {
       return this.perms
-        .filter(function (box) {
-          return box.selected
-        })
-        .map(function (box) {
-          return box.name
-        })
+        .filter(box => { return box.selected })
+        .map(box => { return box.value })
     }
   },
   data () {
@@ -71,15 +68,15 @@ export default {
     }
   },
   ready: function () {
-    var _this = this
-
-    auth.availablePermissions().then(function (response) {
-      for (var key in response.data) {
-        _this.perms.push({
-          name: response.data[key],
+    console.log()
+    auth.availablePermissions().then(response => {
+      Object.keys(response.data).forEach((key) => {
+        this.perms.push({
+          name: PERMISSIONS.get(response.data[key]),
+          value: response.data[key],
           selected: false
         })
-      }
+      })
     })
   }
 }
