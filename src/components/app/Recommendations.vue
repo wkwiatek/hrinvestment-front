@@ -38,18 +38,19 @@
 </template>
 
 <script>
-  import { RecommendationResource } from '../../resources/index'
+import { getAllRecommendations } from '../../vuex/actions'
 
-  export default {
-    data () {
-      return {
-        recommendations: []
-      }
+export default {
+  vuex: {
+    getters: {
+      recommendations: ({ recommendations }) => recommendations.all
     },
-    ready: function () {
-      RecommendationResource.get().then(res => {
-        this.recommendations = res.data
-      })
+    actions: {
+      getAllRecommendations
     }
+  },
+  created () {
+    this.getAllRecommendations()
   }
+}
 </script>
