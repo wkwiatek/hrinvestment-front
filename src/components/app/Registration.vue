@@ -54,11 +54,23 @@
 import { sendRegisterUserForm } from '../../vuex/actions'
 import auth from '../../api/auth'
 import {PERMISSIONS} from '../../utils/translations.js'
+import { auth as authState } from '../../vuex/getters'
 
 export default {
+  route: {
+    activate: function (transition) {
+      if (!this.authState.permissions.includes('ADD_USER')) {
+        transition.abort()
+      }
+      transition.next()
+    }
+  },
   vuex: {
     actions: {
       sendRegisterUserForm
+    },
+    getters: {
+      authState
     }
   },
   methods: {

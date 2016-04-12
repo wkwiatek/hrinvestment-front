@@ -81,25 +81,37 @@
 </template>
 
 <script>
-  import { sendWorkerRecommendationForm } from '../../../vuex/actions'
+import { sendWorkerRecommendationForm } from '../../../vuex/actions'
+import { auth } from '../../../vuex/getters'
 
-  export default {
-    vuex: {
-      actions: {
-        sendWorkerRecommendationForm
+export default {
+  route: {
+    activate: function (transition) {
+      if (!this.auth.permissions.includes('RECOMMEND_WORKER')) {
+        transition.abort()
       }
+      transition.next()
+    }
+  },
+  vuex: {
+    actions: {
+      sendWorkerRecommendationForm
     },
-    methods: {
-      send () {
-        this.$progress.start()
-        this.sendWorkerRecommendationForm(this.form)
-        this.$progress.finish()
-      }
-    },
-    data () {
-      return {
-        form: {name: '', surname: '', job: '', phone: '', address: '', country: ''}
-      }
+    getters: {
+      auth
+    }
+  },
+  methods: {
+    send () {
+      this.$progress.start()
+      this.sendWorkerRecommendationForm(this.form)
+      this.$progress.finish()
+    }
+  },
+  data () {
+    return {
+      form: {name: '', surname: '', job: '', phone: '', address: '', country: ''}
     }
   }
+}
 </script>
