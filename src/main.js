@@ -20,7 +20,6 @@ Vue.use(VueValidator)
 Vue.use(VueProgress)
 
 var router = new VueRouter({
-  history: true,
   saveScrollPosition: true
 })
 
