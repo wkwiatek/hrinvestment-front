@@ -18,7 +18,18 @@
           <div class="list-group-item">
              <input v-model="form.password" type="password" placeholder="Hasło" class="form-control no-border" required="">
           </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Uprawnienia</label>
+            <div class="col-sm-8">
+              <div class="checkbox" v-for="perm in perms">
+                <label class="i-checks">
+                  <input type="checkbox" v-model="perm.selected" value="perm.selected"><i></i>{{perm.name}}
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
+        {{ selectedPerms | json }}
         <button type="submit" class="btn btn-lg btn-primary btn-block">Rejestruj</button>
       </form>
     </div>
@@ -27,6 +38,7 @@
 
 <script>
 import { sendRegisterUserForm } from '../../vuex/actions'
+import auth from '../../api/auth'
 
 export default {
   vuex: {
@@ -41,10 +53,34 @@ export default {
       this.$progress.finish()
     }
   },
+  computed: {
+    selectedPerms: function () {
+      return this.perms
+        .filter(function (box) {
+          return box.selected
+        })
+        .map(function (box) {
+          return box.name
+        })
+    }
+  },
   data () {
     return {
-      form: { name: '', surname: '', email: '', password: '' }
+      form: { name: '', surname: '', email: '', password: '' },
+      perms: []
     }
+  },
+  ready: function () {
+    var _this = this
+
+    auth.availablePermissions().then(function (response) {
+      for (var key in response.data) {
+        _this.perms.push({
+          name: response.data[key],
+          selected: false
+        })
+      }
+    })
   }
 }
 </script>
