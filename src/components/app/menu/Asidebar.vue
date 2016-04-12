@@ -36,7 +36,7 @@
 
               <li>
                 <a v-link="{ path: '/app/register' }">
-                  <i class="fa fa-users icon text-success"></i>
+                  <i class="fa fa-user icon text-success"></i>
                   <span>Rejestracja</span>
                 </a>
               </li>

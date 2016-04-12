@@ -35,13 +35,13 @@
                 <small class="text-danger" v-show="$validation.password.required">Należy podać hasło</small>
               </div>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" aria-disabled="true" :disabled="!$validation.valid">Log in</button>
+            <button type="submit" class="btn btn-lg btn-primary btn-block" aria-disabled="true" :disabled="!$validation.valid">Zaloguj</button>
             <div class="line line-dashed"></div>
           </form>
         </validatior>
       </div>
       <p class="ng-scope">
-        <small class="text-muted">Web app framework base on Bootstrap and AngularJS<br>© 2014</small>
+        <small class="text-muted">© 2016 HR Investment</small>
       </p>
     </div>
   </div>
