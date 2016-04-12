@@ -47,9 +47,8 @@
       }
     },
     ready: function () {
-      var _this = this
-      RecommendationResource.get().then(function (res) {
-        _this.recommendations = res.data
+      RecommendationResource.get().then(res => {
+        this.recommendations = res.data
       })
     }
   }
