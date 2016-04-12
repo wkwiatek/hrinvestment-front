@@ -1,7 +1,7 @@
 <template>
   <aside class="app-aside hidden-xs bg-black">
     <div class="aside-wrap">
-      <div class=navi-wrap">
+      <div class="navi-wrap">
         <nav ui-nav="" class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">

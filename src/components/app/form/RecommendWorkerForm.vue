@@ -1,11 +1,8 @@
 <template>
-  <div class="bg-light lter b-b wrapper-md hidden-print">
-    <h1 class="m-n font-thin h3">Formularz: Poleć pracownika</h1>
-  </div>
   <div class="wrapper">
     <div class="col-md-6 col-lg-offset-3">
       <div class="panel panel-default">
-        <div class="panel-heading font-bold">Podstawowe informacje</div>
+        <div class="panel-heading font-bold">Poleć pracownika</div>
         <div class="panel-body">
           <form novalidate @submit.prevent="send()" class="form-horizontal">
             <div class="form-group">
