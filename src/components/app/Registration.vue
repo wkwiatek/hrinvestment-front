@@ -57,8 +57,8 @@ export default {
   computed: {
     selectedPerms: function () {
       return this.perms
-        .filter(box => { return box.selected })
-        .map(box => { return box.value })
+        .filter(box => box.selected)
+        .map(box => box.value)
     }
   },
   data () {
@@ -68,7 +68,6 @@ export default {
     }
   },
   ready: function () {
-    console.log()
     auth.availablePermissions().then(response => {
       Object.keys(response.data).forEach((key) => {
         this.perms.push({

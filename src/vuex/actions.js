@@ -53,6 +53,7 @@ export const sendRegisterUserForm = ({ dispatch }, form) => {
         type: 'success',
         body: 'Użytkownik został zarejestrowany'
       })
+      dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
     },
     () => {
       dispatch(types.FORM_FAILURE)
@@ -81,6 +82,7 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form, fileData) => {
       }, () => {
         console.debug('file upload failed')
       })
+      dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
     },
     () => {
       dispatch(types.FORM_FAILURE)
@@ -104,6 +106,7 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
         type: 'success',
         body: 'Formularz został poprawnie przesłany'
       })
+      dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
     },
     () => {
       dispatch(types.FORM_FAILURE)
