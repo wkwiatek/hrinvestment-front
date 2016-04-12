@@ -58,10 +58,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Plik</label>
               <div class="col-sm-10">
-                <input type="file" data-classinput="form-control inline v-middle input-s" id="filestyle-0" tabindex="-1"
+                <input @change="onFileChange" type="file" data-classinput="form-control inline v-middle input-s" id="filestyle-0" tabindex="-1"
                        style="position: absolute; clip: rect(0px 0px 0px 0px);">
                 <div class="bootstrap-filestyle input-group">
-                  <input type="text" class="form-control " disabled="">
+                  <input v-model="fileName" type="text" class="form-control " disabled="">
                 <span class="group-span-filestyle input-group-btn" tabindex="0">
                   <label for="filestyle-0" class="btn btn-default ">
                     <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Wybierz plik
@@ -92,13 +92,25 @@
     methods: {
       send () {
         this.$progress.start()
-        this.sendCompanyRecommendationForm(this.form)
+        this.sendCompanyRecommendationForm(this.form, this.fileData)
         this.$progress.finish()
+      },
+      onFileChange (e) {
+        var files = e.target.files || e.dataTransfer.files
+        if (!files.length) {
+          return
+        }
+
+        const file = files[0]
+        this.fileName = file.name
+        this.fileData = new FormData() // eslint-disable-line no-undef
+        this.fileData.append('file', files[0])
       }
     },
     data () {
       return {
-        form: {name: '', surname: '', job: '', phone: '', address: '', country: ''}
+        form: {name: '', surname: '', job: '', phone: '', address: '', country: ''},
+        fileName: ''
       }
     }
   }
