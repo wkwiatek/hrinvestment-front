@@ -106,7 +106,7 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
         type: 'success',
         body: 'Formularz został poprawnie przesłany'
       })
-      dispatch(types.CHANGE_ROUTE, {path: '/app/recommendations'})
+      dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
     },
     () => {
       dispatch(types.FORM_FAILURE)
