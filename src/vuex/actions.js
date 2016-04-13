@@ -2,6 +2,7 @@ import auth from '../api/auth'
 import recommendCompany from '../api/recommend-company'
 import recommendWorker from '../api/recommend-worker'
 import registerUser from '../api/register-user'
+import recommendations from '../api/recommendations'
 
 import * as types from './mutation-types'
 
@@ -108,4 +109,10 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
     }
   )
   setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
+}
+
+export const getAllRecommendations = ({ dispatch }) => {
+  recommendations.getAll().then(res => {
+    dispatch(types.RECEIVE_RECOMMENDATIONS, res.data)
+  })
 }

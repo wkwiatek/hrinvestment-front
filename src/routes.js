@@ -1,6 +1,7 @@
 import App from './components/app/App'
 import Home from './components/app/Home'
 import Registration from './components/app/Registration'
+import Recommendations from './components/app/Recommendations.vue'
 import RecommendCompanyForm from './components/app/form/RecommendCompanyForm'
 import RecommendWorkerForm from './components/app/form/RecommendWorkerForm'
 import Login from './components/Login'
@@ -19,10 +20,13 @@ const createRouter = (router) => {
         '/register': {
           component: Registration
         },
-        '/form/recommend-company': {
+        '/recommendations': {
+          component: Recommendations
+        },
+        '/recommend/company': {
           component: RecommendCompanyForm
         },
-        '/form/recommend-worker': {
+        '/recommend/worker': {
           component: RecommendWorkerForm
         }
       }
