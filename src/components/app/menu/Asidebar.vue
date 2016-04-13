@@ -4,7 +4,7 @@
       <div class="navi-wrap">
         <nav ui-nav="" class="navi clearfix">
             <ul class="nav">
-              <li>
+              <li v-if="auth.permissions.includes('SHOW_RECOMMENDATIONS')">
                 <a v-link="{ path: '/app/recommendations' }">
                   <i class="fa fa-bars icon text-success"></i>
                   <span>Rekomendacje</span>
