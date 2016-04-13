@@ -3,8 +3,9 @@ import recommendCompany from '../api/recommend-company'
 import recommendWorker from '../api/recommend-worker'
 import registerUser from '../api/register-user'
 import recommendations from '../api/recommendations'
-import Vue from 'vue'
+import {PERMISSIONS} from '../utils/translations.js'
 
+import Vue from 'vue'
 import * as types from './mutation-types'
 
 export const authorize = ({ dispatch }, user) => {
@@ -123,5 +124,20 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
 export const getAllRecommendations = ({ dispatch }) => {
   recommendations.getAll().then(res => {
     dispatch(types.RECEIVE_RECOMMENDATIONS, res.data)
+  })
+}
+
+export const getAvailablePermissions = ({ dispatch }) => {
+  auth.availablePermissions().then(response => {
+    var allPerms = []
+
+    Object.keys(response.data).forEach((key) => {
+      allPerms.push({
+        name: PERMISSIONS[response.data[key]],
+        value: response.data[key]
+      })
+    })
+
+    dispatch(types.RECEIVE_ALL_PERMISSIONS, allPerms)
   })
 }
