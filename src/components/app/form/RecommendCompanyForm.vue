@@ -104,7 +104,7 @@ export default {
   methods: {
     send () {
       this.$progress.start()
-      this.sendCompanyRecommendationForm(this.form)
+      this.sendCompanyRecommendationForm(this.form, this.fileData)
       this.$progress.finish()
     },
     onFileChange (e) {
