@@ -4,7 +4,7 @@
       <div class="navi-wrap">
         <nav ui-nav="" class="navi clearfix">
             <ul class="nav">
-              <li>
+              <li v-if="auth.permissions.includes('SHOW_RECOMMENDATIONS')">
                 <a v-link="{ path: '/app/recommendations' }">
                   <i class="fa fa-bars icon text-success"></i>
                   <span>Rekomendacje</span>
@@ -14,14 +14,14 @@
                 <span>Formularze</span>
               </li>
 
-              <li>
+              <li v-if="auth.permissions.includes('RECOMMEND_COMPANY')">
                 <a v-link="{ path: '/app/recommend/company' }">
                   <i class="fa fa-edit icon text-info-dker"></i>
                   <span>Poleć firmę</span>
                 </a>
               </li>
 
-              <li>
+              <li v-if="auth.permissions.includes('RECOMMEND_WORKER')">
                 <a v-link="{ path: '/app/recommend/worker' }">
                   <i class="fa fa-edit icon text-info-dker"></i>
                   <span>Poleć pracownika</span>
@@ -34,7 +34,7 @@
                 <span>Użytkownicy</span>
               </li>
 
-              <li>
+              <li v-if="auth.permissions.includes('ADD_USER')">
                 <a v-link="{ path: '/app/register' }">
                   <i class="fa fa-user icon text-success"></i>
                   <span>Rejestracja</span>
@@ -56,11 +56,15 @@
 
 <script>
 import { invalidate } from '../../../vuex/actions'
+import { auth } from '../../../vuex/getters'
 
 export default {
   vuex: {
     actions: {
       invalidate
+    },
+    getters: {
+      auth
     }
   },
   methods: {

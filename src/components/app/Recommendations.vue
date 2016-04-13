@@ -49,7 +49,7 @@ export default {
       getAllRecommendations
     }
   },
-  created () {
+  ready () {
     this.getAllRecommendations()
   }
 }
