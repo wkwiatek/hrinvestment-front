@@ -34,15 +34,14 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">Uprawnienia:</label>
               <div class="col-sm-8">
-                <div class="checkbox" v-for="perm in perms">
+                <div class="checkbox" v-for="perm in availablePermissions">
                   <label class="i-checks">
-                    <input type="checkbox" v-model="perm.selected" value="perm.selected"><i></i>{{perm.name}}
+                    <input type="checkbox" v-model="form.permissions" value="{{perm.value}}"><i></i>{{perm.name}}
                   </label>
                 </div>
               </div>
             </div>
           </div>
-          {{ selectedPerms | json }}
           <button type="submit" class="btn btn-lg btn-primary btn-block" :disabled="!$registerValidator.valid">Rejestruj</button>
         </form>
       </validator>
@@ -80,26 +79,18 @@ export default {
       this.$progress.finish()
     }
   },
-  computed: {
-    selectedPerms: function () {
-      return this.perms
-        .filter(box => box.selected)
-        .map(box => box.value)
-    }
-  },
   data () {
     return {
-      form: { name: '', surname: '', email: '', password: '' },
-      perms: []
+      form: { name: '', surname: '', email: '', password: '', permissions: [] },
+      availablePermissions: []
     }
   },
   ready: function () {
     auth.availablePermissions().then(response => {
       Object.keys(response.data).forEach((key) => {
-        this.perms.push({
-          name: PERMISSIONS.get(response.data[key]),
-          value: response.data[key],
-          selected: false
+        this.availablePermissions.push({
+          name: PERMISSIONS[response.data[key]],
+          value: response.data[key]
         })
       })
     })
