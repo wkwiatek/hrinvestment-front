@@ -19,6 +19,19 @@ export const authorize = ({ dispatch }, user) => {
         type: 'success',
         body: 'Użytkownik został zalogowany'
       })
+
+      auth.availablePermissions().then(response => {
+        var allPerms = []
+
+        Object.keys(response.data).forEach((key) => {
+          allPerms.push({
+            name: PERMISSIONS[response.data[key]],
+            value: response.data[key]
+          })
+        })
+
+        dispatch(types.RECEIVE_ALL_PERMISSIONS, allPerms)
+      })
     },
     () => {
       dispatch(types.AUTH_FAILURE)
@@ -124,20 +137,5 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
 export const getAllRecommendations = ({ dispatch }) => {
   recommendations.getAll().then(res => {
     dispatch(types.RECEIVE_RECOMMENDATIONS, res.data)
-  })
-}
-
-export const getAvailablePermissions = ({ dispatch }) => {
-  auth.availablePermissions().then(response => {
-    var allPerms = []
-
-    Object.keys(response.data).forEach((key) => {
-      allPerms.push({
-        name: PERMISSIONS[response.data[key]],
-        value: response.data[key]
-      })
-    })
-
-    dispatch(types.RECEIVE_ALL_PERMISSIONS, allPerms)
   })
 }

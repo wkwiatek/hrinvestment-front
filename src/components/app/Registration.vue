@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { sendRegisterUserForm, getAvailablePermissions } from '../../vuex/actions'
+import { sendRegisterUserForm } from '../../vuex/actions'
 import { auth as authState } from '../../vuex/getters'
 
 export default {
@@ -64,12 +64,11 @@ export default {
   },
   vuex: {
     actions: {
-      sendRegisterUserForm,
-      getAvailablePermissions
+      sendRegisterUserForm
     },
     getters: {
       authState,
-      availablePermissions: 
+      availablePermissions: ({ auth }) => auth.availablePermissions
     }
   },
   methods: {
@@ -83,9 +82,6 @@ export default {
     return {
       form: { name: '', surname: '', email: '', password: '', permissions: [] }
     }
-  },
-  ready: function () {
-    this.getAvailablePermissions()
   }
 }
 </script>
