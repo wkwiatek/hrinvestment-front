@@ -3,6 +3,7 @@ import recommendCompany from '../api/recommend-company'
 import recommendWorker from '../api/recommend-worker'
 import registerUser from '../api/register-user'
 import recommendations from '../api/recommendations'
+import Vue from 'vue'
 
 import * as types from './mutation-types'
 
@@ -65,7 +66,7 @@ export const sendRegisterUserForm = ({ dispatch }, form) => {
   setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
 }
 
-export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
+export const sendCompanyRecommendationForm = ({ dispatch }, form, fileData) => {
   dispatch(types.FORM_RECOMMEND_COMPANY_REQUEST, form)
   recommendCompany.send(form).then(
     (response) => {
@@ -74,6 +75,11 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form) => {
         header: 'Sukces!',
         type: 'success',
         body: 'Formularz został poprawnie przesłany'
+      })
+      Vue.http.post(`recommend/${response.data.id}/file`, fileData).then(() => {
+        console.debug('file upload succeed')
+      }, () => {
+        console.debug('file upload failed')
       })
     },
     () => {
