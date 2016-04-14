@@ -20,15 +20,11 @@ export const authorize = ({ dispatch }, user) => {
         body: 'Użytkownik został zalogowany'
       })
 
-      auth.availablePermissions().then(response => {
-        var allPerms = []
-
-        Object.keys(response.data).forEach((key) => {
-          allPerms.push({
-            name: PERMISSIONS[response.data[key]],
-            value: response.data[key]
-          })
-        })
+      auth.availablePermissions().then(({ data }) => {
+        const allPerms = Object.keys(data).map(key => ({
+          name: PERMISSIONS[data[key]],
+          value: data[key]
+        }))
 
         dispatch(types.RECEIVE_ALL_PERMISSIONS, allPerms)
       })
