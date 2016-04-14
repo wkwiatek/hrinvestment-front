@@ -5,7 +5,6 @@ import registerUser from '../api/register-user'
 import recommendations from '../api/recommendations'
 import {PERMISSIONS} from '../utils/translations.js'
 
-import Vue from 'vue'
 import * as types from './mutation-types'
 
 export const authorize = ({ dispatch }, user) => {
@@ -44,7 +43,7 @@ export const authorize = ({ dispatch }, user) => {
 export const invalidate = ({ dispatch }) => {
   dispatch(types.AUTH_REQUEST)
   dispatch(types.AUTH_INVALIDATE)
-  dispatch(types.CHANGE_ROUTE, {path: '/login'})
+  dispatch(types.CHANGE_ROUTE, { path: '/login' })
   dispatch(types.ALERT_SHOW, {
     header: 'Sukces!',
     type: 'success',
@@ -63,7 +62,7 @@ export const sendRegisterUserForm = ({ dispatch }, form) => {
         type: 'success',
         body: 'Użytkownik został zarejestrowany'
       })
-      dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
+      dispatch(types.CHANGE_ROUTE, { path: '/app/home' })
     },
     () => {
       dispatch(types.FORM_FAILURE)
@@ -87,15 +86,34 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form, fileData) => {
         type: 'success',
         body: 'Formularz został poprawnie przesłany'
       })
-      Vue.http.post(`recommend/${response.data.id}/file`, fileData).then(() => {
-        console.debug('file upload succeed')
-      }, () => {
-        console.debug('file upload failed')
-      })
-      dispatch(types.CHANGE_ROUTE, {path: '/app/recommendations'})
+      if (fileData) {
+        recommendCompany.saveFile({ id: response.data.id }, fileData).then(
+          () => {
+            dispatch(types.ALERT_SHOW, {
+              header: 'Sukces!',
+              type: 'success',
+              body: 'Plik został przesłany poprawnie'
+            })
+            setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
+            dispatch(types.CHANGE_ROUTE, { path: '/app/home' })
+          },
+          () => {
+            setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
+            dispatch(types.ALERT_SHOW, {
+              header: 'Błąd!',
+              type: 'danger',
+              body: 'Błąd podczas przesyłania pliku'
+            })
+          }
+        )
+      } else {
+        setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
+        dispatch(types.CHANGE_ROUTE, { path: '/app/home' })
+      }
     },
     () => {
       dispatch(types.FORM_FAILURE)
+      setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
       dispatch(types.ALERT_SHOW, {
         header: 'Błąd!',
         type: 'danger',
@@ -103,10 +121,9 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form, fileData) => {
       })
     }
   )
-  setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
 }
 
-export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
+export const sendWorkerRecommendationForm = ({ dispatch }, form, fileData) => {
   dispatch(types.FORM_RECOMMEND_WORKER_REQUEST, form)
   recommendWorker.send(form).then(
     (response) => {
@@ -116,10 +133,33 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
         type: 'success',
         body: 'Formularz został poprawnie przesłany'
       })
-      dispatch(types.CHANGE_ROUTE, {path: '/app/home'})
+      if (fileData) {
+        recommendWorker.saveFile({ id: response.data.id }, fileData).then(
+          () => {
+            dispatch(types.ALERT_SHOW, {
+              header: 'Sukces!',
+              type: 'success',
+              body: 'Plik został przesłany poprawnie'
+            })
+            setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
+            dispatch(types.CHANGE_ROUTE, { path: '/app/home' })
+          },
+          () => {
+            dispatch(types.ALERT_SHOW, {
+              header: 'Błąd!',
+              type: 'danger',
+              body: 'Błąd podczas przesyłania pliku'
+            })
+          }
+        )
+      } else {
+        setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
+        dispatch(types.CHANGE_ROUTE, { path: '/app/home' })
+      }
     },
     () => {
       dispatch(types.FORM_FAILURE)
+      setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
       dispatch(types.ALERT_SHOW, {
         header: 'Błąd!',
         type: 'danger',
@@ -127,7 +167,6 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form) => {
       })
     }
   )
-  setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
 }
 
 export const getAllRecommendations = ({ dispatch }) => {
