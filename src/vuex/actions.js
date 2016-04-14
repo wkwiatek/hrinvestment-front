@@ -3,8 +3,9 @@ import recommendCompany from '../api/recommend-company'
 import recommendWorker from '../api/recommend-worker'
 import registerUser from '../api/register-user'
 import recommendations from '../api/recommendations'
-import Vue from 'vue'
+import {PERMISSIONS} from '../utils/translations.js'
 
+import Vue from 'vue'
 import * as types from './mutation-types'
 
 export const authorize = ({ dispatch }, user) => {
@@ -17,6 +18,15 @@ export const authorize = ({ dispatch }, user) => {
         header: 'Sukces!',
         type: 'success',
         body: 'Użytkownik został zalogowany'
+      })
+
+      auth.availablePermissions().then(({ data }) => {
+        const allPerms = Object.keys(data).map(key => ({
+          name: PERMISSIONS[data[key]],
+          value: data[key]
+        }))
+
+        dispatch(types.RECEIVE_ALL_PERMISSIONS, allPerms)
       })
     },
     () => {

@@ -2,12 +2,14 @@ import {
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_FAILURE,
-  AUTH_INVALIDATE
+  AUTH_INVALIDATE,
+  RECEIVE_ALL_PERMISSIONS
 } from '../mutation-types'
 
 const state = {
   token: null,
   permissions: [],
+  availablePermissions: [],
   firstname: null,
   lastname: null
 }
@@ -23,9 +25,14 @@ const mutations = {
     state.lastname = lastname
   },
 
+  [RECEIVE_ALL_PERMISSIONS] (state, allPermissions) {
+    state.availablePermissions = allPermissions
+  },
+
   [AUTH_FAILURE] (state) {
     state.token = null
     state.permissions = []
+    state.availablePermisions = []
     state.firstname = null
     state.lastname = null
   },
@@ -33,6 +40,7 @@ const mutations = {
   [AUTH_INVALIDATE] (state) {
     state.token = null
     state.permissions = []
+    state.availablePermisions = []
     state.firstname = null
     state.lastname = null
   }

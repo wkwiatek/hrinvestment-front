@@ -51,8 +51,6 @@
 
 <script>
 import { sendRegisterUserForm } from '../../vuex/actions'
-import auth from '../../api/auth'
-import {PERMISSIONS} from '../../utils/translations.js'
 import { auth as authState } from '../../vuex/getters'
 
 export default {
@@ -69,7 +67,8 @@ export default {
       sendRegisterUserForm
     },
     getters: {
-      authState
+      authState,
+      availablePermissions: ({ auth }) => auth.availablePermissions
     }
   },
   methods: {
@@ -81,19 +80,8 @@ export default {
   },
   data () {
     return {
-      form: { name: '', surname: '', email: '', password: '', permissions: [] },
-      availablePermissions: []
+      form: { name: '', surname: '', email: '', password: '', permissions: [] }
     }
-  },
-  ready: function () {
-    auth.availablePermissions().then(response => {
-      Object.keys(response.data).forEach((key) => {
-        this.availablePermissions.push({
-          name: PERMISSIONS[response.data[key]],
-          value: response.data[key]
-        })
-      })
-    })
   }
 }
 </script>
