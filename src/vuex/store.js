@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createLogger from 'vuex/logger'
 
 import alert from './modules/alert'
 import auth from './modules/auth'
 import forms from './modules/forms'
 import recommendations from './modules/recommendations'
+import middlewares from './middlewares'
+
+const debug = process.env.NODE_ENV !== 'production'
 
 Vue.use(Vuex)
-Vue.config.debug = true
-
-const debug = !(process.env.NODE_ENV === 'production')
+Vue.config.debug = debug
 
 export default new Vuex.Store({
   modules: {
@@ -20,5 +20,5 @@ export default new Vuex.Store({
     recommendations
   },
   strict: debug,
-  middlewares: debug ? [createLogger()] : []
+  middlewares: middlewares
 })
