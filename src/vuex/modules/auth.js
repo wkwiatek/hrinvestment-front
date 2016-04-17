@@ -6,7 +6,9 @@ import {
   RECEIVE_ALL_PERMISSIONS
 } from '../mutation-types'
 
-const state = {
+import { STORAGE_KEY } from '../constants'
+
+const state = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || {
   token: null,
   permissions: [],
   availablePermissions: [],
