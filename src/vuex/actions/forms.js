@@ -17,7 +17,7 @@ export const sendRegisterUserForm = ({ dispatch }, form) => {
       dispatch(types.CHANGE_ROUTE, { path: '/app/home' })
     },
     () => {
-      dispatch(types.FORM_FAILURE)
+      dispatch(types.FORM_REGISTER_USER_FAILURE)
       dispatch(types.ALERT_SHOW, {
         header: 'Błąd!',
         type: 'danger',
@@ -64,7 +64,7 @@ export const sendCompanyRecommendationForm = ({ dispatch }, form, fileData) => {
       }
     },
     () => {
-      dispatch(types.FORM_FAILURE)
+      dispatch(types.FORM_RECOMMEND_COMPANY_FAILURE)
       setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
       dispatch(types.ALERT_SHOW, {
         header: 'Błąd!',
@@ -110,7 +110,7 @@ export const sendWorkerRecommendationForm = ({ dispatch }, form, fileData) => {
       }
     },
     () => {
-      dispatch(types.FORM_FAILURE)
+      dispatch(types.FORM_RECOMMEND_WORKER_FAILURE)
       setTimeout(() => dispatch(types.ALERT_HIDE), 3000)
       dispatch(types.ALERT_SHOW, {
         header: 'Błąd!',

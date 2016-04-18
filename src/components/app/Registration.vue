@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-lg btn-primary btn-block" :disabled="!$registerValidator.valid">Rejestruj</button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block" :disabled="!$registerValidator.valid || isLocked">Rejestruj</button>
         </form>
       </validator>
     </div>
@@ -68,7 +68,8 @@ export default {
     },
     getters: {
       authState,
-      availablePermissions: ({ auth }) => auth.availablePermissions
+      availablePermissions: ({ auth }) => auth.availablePermissions,
+      isLocked: ({ forms }) => forms.register.isLocked
     }
   },
   methods: {
