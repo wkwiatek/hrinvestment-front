@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { sendWorkerRecommendationForm } from '../../../vuex/actions'
+import { sendWorkerRecommendationForm } from '../../../vuex/actions/forms'
 import { auth } from '../../../vuex/getters'
 
 export default {

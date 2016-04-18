@@ -52,7 +52,7 @@
 </style>
 
 <script>
-import { authorize } from '../vuex/actions'
+import { authorize } from '../vuex/actions/auth'
 export default {
   vuex: {
     actions: {

@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { getAllRecommendations } from '../../vuex/actions'
+import { getAllRecommendations } from '../../vuex/actions/recommendations'
 
 export default {
   vuex: {
