@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="row text-center">
-              <button type="submit" class="btn btn-lg btn-success">Zapisz</button>
+              <button type="submit" class="btn btn-lg btn-success" :disabled="isLocked">Zapisz</button>
             </div>
           </form>
         </div>
@@ -98,7 +98,8 @@ export default {
       sendCompanyRecommendationForm
     },
     getters: {
-      auth
+      auth,
+      isLocked: ({ forms }) => forms.recommendCompany.isLocked
     }
   },
   methods: {
