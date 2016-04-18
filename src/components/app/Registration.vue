@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { sendRegisterUserForm } from '../../vuex/actions'
+import { sendRegisterUserForm } from '../../vuex/actions/forms'
 import { auth as authState } from '../../vuex/getters'
 
 export default {

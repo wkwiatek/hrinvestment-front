@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { invalidate } from '../../../vuex/actions'
+import { invalidate } from '../../../vuex/actions/auth'
 import { auth } from '../../../vuex/getters'
 
 export default {
